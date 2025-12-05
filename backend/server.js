@@ -4,7 +4,7 @@ import connectDB from './config/db.js'
 import cookieParser from 'cookie-parser'
 import noteRoutes from './routes/noteRoutes.js'
 import userRoutes from './routes/userRoutes.js'
-import {notFound,errorHandler} from './middleware/errorMiddleware.js'
+import { notFound, errorHandler } from './middleware/errorMiddleware.js'
 import cors from 'cors'
 
 dotenv.config()
@@ -12,22 +12,19 @@ connectDB()
 const app = express()
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL,  
-    credentials: true,                
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
 }))
 
 app.use(express.json())
-app.use(express.urlencoded({ extended : false }))
+app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 
-// Notes routing 
-app.use('/api/user',userRoutes)
-// User routing
-app.use('/api/notes',noteRoutes)
-
+app.use('/api/user', userRoutes)
+app.use('/api/notes', noteRoutes)
 
 app.use(notFound)
 app.use(errorHandler)
 
 const port = process.env.PORT || 5000
-app.listen(port,()=> console.log('Server is running on port 5000'))
+app.listen(port, () => console.log(`Server running on port ${port}`))
