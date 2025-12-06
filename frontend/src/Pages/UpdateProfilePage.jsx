@@ -5,7 +5,7 @@ import api from '../api/axios.js'
 import Loader from '../components/Loader.jsx'
 import { useNavigate } from 'react-router-dom'
 const UpdateProfilePage = () => {
-    const { user, loading, setLoading } = useAuth()
+    const { user, setUser, loading, setLoading } = useAuth()
     const navigate = useNavigate()
     const [name, setName] = useState(user?.name || "")
     const [email, setEmail] = useState(user?.email || "")
