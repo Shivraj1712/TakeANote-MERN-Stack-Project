@@ -1,4 +1,4 @@
-export default function Loader({ fullscreen = false }) {
+export default function Loader({ fullscreen = true }) {
     return (
         <div
             className={
