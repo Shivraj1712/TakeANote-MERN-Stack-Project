@@ -33,7 +33,7 @@ export const AuthProvider = ({ children }) => {
         try {
             setLoading(true)
             await api.post('/user/logout')
-            setUser("")
+            setUser(null)
         } catch (error) {
             console.log("Backend offline, clearing user client-side")
         } finally {
