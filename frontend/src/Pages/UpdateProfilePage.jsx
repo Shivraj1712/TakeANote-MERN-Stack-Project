@@ -29,7 +29,7 @@ const UpdateProfilePage = () => {
         }
 
         try {
-            const data = await api.put("/user/profile", {
+            const { data }= await api.put("/user/profile", {
                 name,
                 email,
                 password,
