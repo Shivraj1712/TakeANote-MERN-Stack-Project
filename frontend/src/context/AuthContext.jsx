@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
     // Calling the Fetch user function
     useEffect(() => {
         fetchUser()
-    }, [])
+    }, [user])
     // Login function 
     const login = async ({ email, password }) => {
         const { data } = await api.post('/user/auth', { email, password })
