@@ -105,7 +105,7 @@ export default function Navbar() {
                     {user ? (
                         <>
                             <Link
-                                to="/dashboard"
+                                to="/profile"
                                 onClick={() => setIsOpen(false)}
                                 className="hover:text-blue-300"
                             >
