@@ -31,7 +31,9 @@ export const AuthProvider = ({ children }) => {
     // Logout function
     const logout = async () => {
         try {
+            setLoading(true)
             await api.post('/user/logout')
+            setUser("")
         } catch (error) {
             console.log("Backend offline, clearing user client-side")
         } finally {
