@@ -9,7 +9,7 @@ export default function Navbar() {
     const navRef = useRef(null);
     const mobileMenuRef = useRef(null);
     const navigate = useNavigate();
-    const { user, logout } = useAuth();
+    const { user, logout ,setUser } = useAuth();
 
     useEffect(() => {
         gsap.to(navRef.current, { y: 0, opacity: 1, duration: 0.4 });
@@ -35,6 +35,7 @@ export default function Navbar() {
 
     const handleLogout = () => {
         logout();
+        setUser(null);
         navigate("/");
     };
 
