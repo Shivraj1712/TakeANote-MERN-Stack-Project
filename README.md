@@ -1,16 +1,104 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# **TakeANote – MERN Notes Application**
 
-Currently, two official plugins are available:
+A full-stack notes app built using the **MERN stack (MongoDB, Express, React, Node.js)** with secure authentication, protected API routes, persistent sessions using HTTP-Only cookies, and smooth CRUD operations for notes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ⭐ **Features**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* User login and registration with JWT
+* Persistent authentication using HTTP-Only cookies
+* Protected routes and secure APIs
+* Create, update, view and delete personal notes
+* Centralized global state using React Context API
+* Tailwind UI, Modals, Loaders and Toast alerts
+* Production deployment using:
 
-## Expanding the ESLint configuration
+  * **Backend → Render**
+  * **Frontend → Vercel**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧰 **Tech Stack**
+
+| Layer          | Tools                                     |
+| -------------- | ----------------------------------------- |
+| **Frontend**   | React, Vite, Tailwind, Axios, Context API |
+| **Backend**    | Node.js, Express.js, Mongoose             |
+| **Database**   | MongoDB Atlas                             |
+| **Auth**       | JWT + HTTP-Only Cookies                   |
+| **Deployment** | Vercel + Render                           |
+
+---
+
+## 📂 **Project Structure**
+
+```
+root/
+│
+├── backend/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── utils/
+│   └── server.js
+│
+└── frontend/
+    ├── src/
+    ├── public/
+    └── vite.config.js
+```
+
+---
+
+## 📚 **REST API Overview**
+
+### **Auth Routes**
+
+| Method | Endpoint             | Description        |
+| ------ | -------------------- | ------------------ |
+| POST   | `/api/user/register` | Register           |
+| POST   | `/api/user/auth`     | Login              |
+| POST   | `/api/user/logout`   | Logout             |
+| GET    | `/api/user/profile`  | Get logged-in user |
+
+### **Notes Routes**
+
+| Method | Endpoint         | Description       |
+| ------ | ---------------- | ----------------- |
+| GET    | `/api/notes`     | Get all notes     |
+| GET    | `/api/notes/:id` | Get a single note |
+| POST   | `/api/notes`     | Create note       |
+| PUT    | `/api/notes/:id` | Update note       |
+| DELETE | `/api/notes/:id` | Delete note       |
+
+*All notes are private and linked to authenticated users only.*
+
+---
+
+## 🌐 **Deployment Overview**
+
+* **Backend hosted on Render**
+* **Frontend hosted on Vercel**
+* CORS and cookies enabled for secure cross-origin communication
+* No localStorage or sessionStorage used for auth—only HTTP-Only cookies
+
+---
+
+## 🎯 **What This Project Demonstrates**
+
+* Practical MERN stack development
+* Backend authentication and API security
+* Global state handling with Context API
+* Modular React UI with Tailwind
+* Real-world deployment workflow
+
+---
+
+## 👤 **Author**
+
+**Shivraj Maharaul**
+
+---
