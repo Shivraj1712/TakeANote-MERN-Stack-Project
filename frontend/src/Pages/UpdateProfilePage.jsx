@@ -29,12 +29,13 @@ const UpdateProfilePage = () => {
         }
 
         try {
-            await api.put("/user/profile", {
+            const data = await api.put("/user/profile", {
                 name,
                 email,
                 password,
                 confirmPassword
             })
+            setUser(data);
             toast.success("Profile updated successfully")
             navigate("/profile")
         } catch (error) {
