@@ -12,7 +12,7 @@ connectDB()
 const app = express()
 
 app.use(cors({
-  origin: "https://takeanote-mern.vercel.app",
+  origin: "https://takeanote-mern-two.vercel.app",
   credentials: true,
 }))
 
