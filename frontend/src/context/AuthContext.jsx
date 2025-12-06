@@ -41,6 +41,7 @@ export const AuthProvider = ({ children }) => {
     // Value that has to be passed on
     const value = {
         user,
+        setUser,
         login,
         logout,
         loading,
