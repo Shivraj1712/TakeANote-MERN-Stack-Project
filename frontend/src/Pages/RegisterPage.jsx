@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import useAuth from '../context/AuthContext.jsx'
 import { toast } from 'react-toastify'
@@ -7,26 +7,32 @@ import Loader from '../components/Loader.jsx'
 
 const RegisterPage = () => {
     const navigate = useNavigate()
-    const { loading, setLoading } = useAuth()
+    const { user, loading, setLoading } = useAuth()
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [confirmPassword, setConfirmPassword] = useState("")
 
+    useEffect(() => {
+        if (user) navigate('/profile')
+    }, [user, navigate])
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLoading(true)
-        if(password.trim().length < 8 || confirmPassword.trim().length < 8 ){
+
+        if (!name.trim() || !confirmPassword.trim() || !email.trim() || !password.trim()) {
+            toast.error('Please enter valid credentials!')
+            setLoading(false)
+            return
+        }
+
+        if (password.trim().length < 8 || confirmPassword.trim().length < 8) {
             toast.error('Please enter password with minimum 8 characters!')
             setLoading(false)
             return 
         }
 
-        if (!name.trim() || !confirmPassword.trim() || !email.trim() || !password.trim()) {
-            toast.error('Please enter valid credentails!')
-            setLoading(false)
-            return
-        }
         if (password !== confirmPassword) {
             toast.error("Passwords do not match")
             setLoading(false)
