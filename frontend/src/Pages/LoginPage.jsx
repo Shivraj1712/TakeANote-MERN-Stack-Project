@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import useAuth from '../context/AuthContext.jsx'
 import { toast } from 'react-toastify'
@@ -6,26 +6,32 @@ import Loader from '../components/Loader.jsx'
 
 const LoginPage = () => {
     const navigate = useNavigate()
-    const { login, loading, setLoading } = useAuth()
+    const { user, login, loading, setLoading } = useAuth()
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+
+    useEffect(() => {
+        if (user) navigate('/profile')
+    }, [user, navigate])
 
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLoading(true)
-        if(password.trim().length < 8){
-            toast.error('Please enter a valid password!')
-            setLoading(false)
-            return 
-        }
+
         if (!email.trim() || !password.trim()) {
-            toast.error('Please enter valid credentails!')
+            toast.error('Please enter valid credentials!')
+            setLoading(false)
+            return
+        }
+
+        if (password.trim().length < 8) {
+            toast.error('Please enter a valid password!')
             setLoading(false)
             return
         }
 
         try {
-            await login( email, password )
+            await login(email, password)
             toast.success("User Login successful")
             navigate("/profile")
         } catch (error) {
