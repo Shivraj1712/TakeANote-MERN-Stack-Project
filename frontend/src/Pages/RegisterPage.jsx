@@ -17,7 +17,7 @@ const RegisterPage = () => {
         e.preventDefault()
         setLoading(true)
         if(password.trim().length < 8 || confirmPassword.trim().length < 8 ){
-            toast.error('Please enter password of Valid length')
+            toast.error('Please enter password with minimum 8 characters!')
             setLoading(false)
             return 
         }
