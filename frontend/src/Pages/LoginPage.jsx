@@ -13,7 +13,11 @@ const LoginPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLoading(true)
-
+        if(password.trim().length < 8){
+            toast.error('Please enter a valid password!')
+            setLoading(false)
+            return 
+        }
         if (!email.trim() || !password.trim()) {
             toast.error('Please enter valid credentails!')
             setLoading(false)
