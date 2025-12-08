@@ -16,6 +16,11 @@ const RegisterPage = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setLoading(true)
+        if(password.trim() < 8 || confirmPassword.trim() < 8 ){
+            toast.error('Please enter password of Valid length')
+            setLoading(false)
+            return 
+        }
 
         if (!name.trim() || !confirmPassword.trim() || !email.trim() || !password.trim()) {
             toast.error('Please enter valid credentails!')
